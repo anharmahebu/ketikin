@@ -1,0 +1,18 @@
+# Rahasia — JANGAN commit
+.env
+*.key
+
+# Catatan internal, gak usah di-push
+CLAUDE.md
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Rekaman audio sementara
+*.wav
+
+# Log
+*.log
