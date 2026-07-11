@@ -1,6 +1,6 @@
-"""Ketikin — dikte suara -> teks rapi -> auto-paste.
+"""Ketikin — dikte suara -> teks (STT) -> auto-paste.
 
-Tahan HOTKEY -> ngomong -> lepas -> teks ke-paste di app aktif.
+Tahan HOTKEY -> ngomong -> lepas -> teks STT ke-paste di app aktif.
 Ctrl+C di terminal buat berhenti.
 """
 import time
@@ -9,7 +9,6 @@ import keyboard
 from config import HOTKEY
 from recorder import Recorder
 from transcribe import transcribe
-from formatter import format_text
 from paster import paste
 
 _KEYS = [k.strip() for k in HOTKEY.split("+") if k.strip()]
@@ -50,12 +49,9 @@ def main():
         if not raw:
             print("(kosong / ga kedengeran)\n")
             continue
-        print(f"Mentah : {raw}")
+        print(f"Teks   : {raw}")
 
-        clean = format_text(raw)
-        print(f"Rapi   : {clean}")
-
-        paste(clean)
+        paste(raw)
         print("Ke-paste.\n")
 
 

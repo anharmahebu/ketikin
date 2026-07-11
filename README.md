@@ -2,18 +2,17 @@
 
 Klon lokal & gratis dari [Wispr Flow](https://wisprflow.ai): **lu ngomong, dia yang ngetikin**.
 
-Tahan hotkey → ngomong → lepas → teks rapi langsung ke-paste di aplikasi yang lagi aktif.
+Tahan hotkey → ngomong → lepas → teks langsung ke-paste di aplikasi yang lagi aktif.
 
 ```
 Tahan hotkey  →  ngomong  →  lepas
       │
       ▼  rekam mic
-      ▼  STT (Groq Whisper)      →  teks mentah
-      ▼  formatting (Groq LLM)   →  teks rapi
+      ▼  STT (Groq Whisper)      →  teks
       ▼  auto-paste (Ctrl+V) ke app yang lagi fokus
 ```
 
-Contoh: *"ehm... tolong kirim laporan itu ke budi ya besok pagi"* → **"Tolong kirim laporan itu ke Budi besok pagi."**
+Contoh: *"tolong kirim laporan itu ke budi ya besok pagi"* → ke-paste apa adanya dari hasil STT.
 
 ## Butuh apa
 
@@ -41,9 +40,8 @@ Isi `.env`:
 
 | Variabel | Default | Guna |
 |---|---|---|
-| `LLM_API_KEY` | — | Key Groq. Dipakai buat STT **dan** LLM. **Wajib.** |
+| `LLM_API_KEY` | — | Key Groq. Dipakai buat STT. **Wajib.** |
 | `LLM_BASE_URL` | `https://api.groq.com/openai/v1` | Endpoint OpenAI-compatible. |
-| `LLM_MODEL` | `llama-3.3-70b-versatile` | Model buat mrapiin teks. |
 | `GROQ_STT_MODEL` | `whisper-large-v3-turbo` | Model Whisper buat STT. |
 | `HOTKEY` | `` alt+` `` | Push-to-talk. |
 | `WHISPER_LANGUAGE` | `id` | Bahasa utama. |
@@ -63,8 +61,7 @@ Tahan **hotkey** → ngomong → lepas → teks ke-paste. `Ctrl+C` di terminal b
 | File | Guna |
 |---|---|
 | `recorder.py` | Rekam mic (stream persisten, nol delay awal). |
-| `transcribe.py` | Audio → teks mentah (Groq Whisper). |
-| `formatter.py` | Teks mentah → teks rapi (Groq LLM). |
+| `transcribe.py` | Audio → teks (Groq Whisper). |
 | `paster.py` | Set clipboard + kirim Ctrl+V. |
 | `config.py` | Konfig terpusat (baca `.env`). |
 | `main.py` | Loop hotkey, gabungin semua. |
